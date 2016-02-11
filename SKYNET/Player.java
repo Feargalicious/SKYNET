@@ -35,7 +35,6 @@ public class Player {
 		if (territories.contains(0) && territories.contains(1) && territories.contains(2) && territories.contains(3)&&territories.contains(4) && territories.contains(5) && territories.contains(6) && territories.contains(7) && territories.contains(8)){
 			numReinforcements += 5;
 		} 
-		} 
 		if (territories.contains(9) && territories.contains(10) && territories.contains(11) && territories.contains(12)&&territories.contains(13) && territories.contains(14) && territories.contains(15)){
 			numReinforcements += 5;
 		}
