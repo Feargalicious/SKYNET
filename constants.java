@@ -108,5 +108,15 @@ public class constants {
 		{499,354},
 		{547,432},        // 40
 		{586,545}
-	};	
+	};
+	public int[] getDimensions(){ //return private vars dimensions 
+		int array[] = new int[2];
+		array[0] = FRAME_WIDTH;
+		array[1] = FRAME_HEIGHT;
+		return array;
+	}
+	
+	public static int GetCoord(int pos1, int pos2){ //accessor 
+		return COUNTRY_COORD[pos1][pos2];
+	}
 }
