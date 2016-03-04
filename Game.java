@@ -146,7 +146,7 @@ public class Game {
 		ui.displayMap();
 	}
 	
-	public static void main (String args[]) {	   
+	public void main (String args[]) {	   
 		board = new Board();
 		ui = new UI(board);
 		assignedTerr = new ArrayList<Integer>();
