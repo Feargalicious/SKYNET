@@ -1,40 +1,98 @@
+/*
+ * Team Name: Risky_Business
+ * Members: Declan Atkins 14388146
+ * 			Mark Caulfield: 14475522
+ * 			Feargal Kavangah: 14722459
+ * 
+ * We didnt get to implement the allowance of non-ambiguous shortening
+ * of the name of territories
+ */
+import javax.swing.*;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player  {
 
 	private List<Integer> territories = new ArrayList<Integer>();
+	private List<Integer> armiesInTerritory = new ArrayList<Integer>();
+	private List<Integer> Cards = new ArrayList<Integer>();
+	private int PlayerId;
 	private int numArmies;
 	private int numTerritories;
-	private int numTerritoriesUnassigned;
 	private int numReinforcements;
 	private String playerName;
-	
-	public Player(String Name){
+	private Color playerColour;
+	private int countInfantryCards;
+	private int countCavalryCards;
+	private int countArtilleryCards;
+	public  Player(String Name, Color Colour){
 		playerName = Name;
-		numArmies = Constants.INIT_UNITS_PLAYER;
-		numTerritoriesUnassigned = Constants.INIT_COUNTRIES_PLAYER;
+		playerColour = Colour;
+		numArmies = GameData.INIT_UNITS_PLAYER;
 		numReinforcements = 0;
+		countInfantryCards = 0;
+		countCavalryCards = 0;
+		countArtilleryCards = 0;
+	}
+	
+	public boolean hasTerritory(int ID){
+		return territories.contains(ID);
+	}
+	public void setId(int id){
+		this.PlayerId = id;
 	}
 	
 	public String getName(){
 		return playerName;
 	}
 	
+	public int getId(){
+		return PlayerId;
+	}
+	
 	public void addTerritory(int id){
+		Cards.add(id);
 		territories.add(id);
-		numTerritories++;
-		if (numTerritoriesUnassigned > 0){
-			numTerritoriesUnassigned--;
+		if(GameData.CARD_VALUES[id] == 0){
+			countInfantryCards++;
 		}
+		else if(GameData.CARD_VALUES[id] == 1){
+			countCavalryCards++;
+		}
+		else{
+			countArtilleryCards++;
+		}
+		numArmies--;//decrease amount of available armies
+		numTerritories++;
 		return;
+	}
+	
+	public String addArmiesToTerritory(int ID, int numUnits){
+		int i;
+		if (territories.contains(ID)){
+			if (numUnits > numArmies){
+				return "Sorry you do not have enough armies available";
+			}
+			for(i = 0;i<territories.size();i++){
+				if (territories.get(i) == ID){
+					break;//exit and keep value of position for i
+				}
+			}
+			armiesInTerritory.add(i, armiesInTerritory.get(i) + numUnits);
+			return "Added " + numUnits + " to " + GameData.COUNTRY_NAMES[ID];
+		}
+		else{
+			return "That territory is not under your control";
+		}
 	}
 	
 	public void getReinforcements(){
 		numReinforcements = 0;
 		if (territories.contains(0) && territories.contains(1) && territories.contains(2) && territories.contains(3)&&territories.contains(4) && territories.contains(5) && territories.contains(6) && territories.contains(7) && territories.contains(8)){
 			numReinforcements += 5;
-		} 
+		}
 		if (territories.contains(9) && territories.contains(10) && territories.contains(11) && territories.contains(12)&&territories.contains(13) && territories.contains(14) && territories.contains(15)){
 			numReinforcements += 5;
 		}
