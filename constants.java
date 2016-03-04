@@ -1,4 +1,4 @@
-	
+public class constants{	
 	
 	public static final int NUM_PLAYERS = 2;
 	public static final int NUM_NEUTRALS = 4;
@@ -108,7 +108,6 @@
 		{499,354},
 		{547,432},      // 40
 		{586,545}
-<<<<<<< HEAD
 	};
 	public int[] getDimensions(){ //return private vars dimensions 
 		int array[] = new int[2];
@@ -121,6 +120,3 @@
 		return COUNTRY_COORD[pos1][pos2];
 	}
 }
-=======
-	};	
->>>>>>> origin/master
