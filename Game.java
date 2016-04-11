@@ -67,7 +67,7 @@ public class Game {
 		if (i<42)
 			return i;
 		else
-			return -1;
+			return shortString(value);
 	}
 	
 	private void addUnits(Player P, int reinforcements){
@@ -727,6 +727,21 @@ public class Game {
 		
 		
 		return sum;
+	}
+	public int shortString(String input){ //str1.toLowerCase().contains(str2.toLowerCase())
+		int match = 0; //more than 1 possible match
+		int matched=0;
+		for (int i=0;i<GameData.NUM_COUNTRIES;i++){
+			if((GameData.COUNTRY_NAMES[i].toLowerCase().contains(input.toLowerCase()))){
+				match++;
+				matched = i;
+			}
+		}
+		if(match > 1){ // too ambiguous
+			ui.displayString("Input too ambiguous, cannot determine country name");
+			return -1;
+		}
+		return matched;
 	}
 	
 }
