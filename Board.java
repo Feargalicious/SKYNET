@@ -31,19 +31,6 @@ public class Board {
 		return;
 	}
 	
-	public boolean testTaken(int country){
-		if (numUnits[country] <= 0){
-			occupied[country] = false;
-			return true;
-		}
-		return false;
-		
-	}
-	
-	public void removeOccupier(int country){
-		occupied[country] = false;
-		numUnits[country] = 0;
-	}
 	public boolean isOccupied(int country) {
 		return occupied[country];
 	}

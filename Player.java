@@ -37,111 +37,6 @@ public class Player  {
 		countArtilleryCards = 0;
 	}
 	
-	public void removeCard(int ID){
-		for(int i=0;i<Cards.size();i++){
-			if(Cards.get(i) == ID){
-				Cards.remove(i);
-			}
-		}
-	}
-	public void removeCardType(int i){
-		if(i==0){
-			countInfantryCards -= 3;
-		}
-		else if(i==1){
-			countCavalryCards -= 3;
-		}
-		else {
-			countArtilleryCards -= 3;
-		}
-	}
-	
-	public boolean testExchangePossible(){
-		if(countArtilleryCards >= 3 || countCavalryCards >= 3 || countInfantryCards >= 3){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
-	public int getCardValue(int i){
-		return Cards.get(i);
-	}
-	public int getNumCards(){
-		return Cards.size();
-	}
-	public  int getNumCavCards(){
-		return countCavalryCards;
-	}
-	public  int getNumInfCards(){
-		return countInfantryCards;
-	}
-	public  int getNumArtCards(){
-		return countArtilleryCards;
-	}
-	
-	public void addCard(int ID){
-		Cards.add(ID);
-		if(GameData.CARD_VALUES[ID] == 0){
-			countInfantryCards++;
-		}
-		else if(GameData.CARD_VALUES[ID] == 1){
-			countCavalryCards++;
-		}
-		else{
-			countArtilleryCards++;
-		}
-	}
-	public int removeArmy(int ID, int num){
-		int i;
-		for(i=0;i<territories.size();i++){
-			if(territories.get(i) == ID){
-				break;
-			}
-		}
-		
-		armiesInTerritory.set(i, (armiesInTerritory.get(i) - num));
-		
-		if(armiesInTerritory.get(i) <= 0){
-			territories.remove(i);
-			armiesInTerritory.remove(i);
-			return 1;
-		}
-		
-		return 0;
-	}
-	
-	public int getArmies(int ID){
-		int i;
-		int found = 0;
-		for(i=0;i<territories.size();i++){
-			if(territories.get(i) == ID){
-				found =1;
-				break;
-			}
-		}
-		if(found == 1)
-			return armiesInTerritory.get(i);
-		else
-			return 0;
-	}
-	
-	public int getTerritories(){
-		return numTerritories;
-	}
-	
-	public void removeTerritory(int ID){
-		int i;
-		for(i=0;i<territories.size();i++){
-			if(territories.get(i) == ID){
-				break;
-			}
-		}
-		territories.remove(i);
-		numTerritories--;
-		return;
-	}
 	public boolean hasTerritory(int ID){
 		return territories.contains(ID);
 	}
@@ -155,10 +50,6 @@ public class Player  {
 	
 	public int getId(){
 		return PlayerId;
-	}
-	
-	public void addUnitsAssignStage(){
-		armiesInTerritory.add(1);
 	}
 	
 	public void addTerritory(int id){
@@ -197,7 +88,7 @@ public class Player  {
 		}
 	}
 	
-	public int getReinforcements(){
+	public void getReinforcements(){
 		numReinforcements = 0;
 		if (territories.contains(0) && territories.contains(1) && territories.contains(2) && territories.contains(3)&&territories.contains(4) && territories.contains(5) && territories.contains(6) && territories.contains(7) && territories.contains(8)){
 			numReinforcements += 5;
@@ -223,6 +114,6 @@ public class Player  {
 			numReinforcements = 3;
 		}
 		
-		return numReinforcements;
+		return;
 	}
 }
