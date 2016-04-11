@@ -1,8 +1,8 @@
 /*
  * Team Name: Risky_Business
- * Members: Declan Atkins 14388146
- * 			Mark Caulfield: 14475522
- * 			Feargal Kavangah: 14722459
+ * Members: 	Declan Atkins 14388146
+ * 		Mark Caulfield: 14475522
+ * 		Feargal Kavangah: 14722459
  * 
  * We didnt get to implement the allowance of non-ambiguous shortening
  * of the name of territories
